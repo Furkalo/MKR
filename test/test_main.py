@@ -2,7 +2,6 @@ import pytest
 import re
 
 
-# Функція для підрахунку слів і речень
 def count_words_and_sentences(text):
     words = re.split(r'[\s,;:]+', text.strip())
     words = [word for word in words if word]  # Видаляємо порожні елементи

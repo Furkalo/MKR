@@ -1,5 +1,6 @@
 import re
 
+
 def count_words_and_sentences(filename):
     try:
         with open(filename, 'r', encoding='utf-8') as file:
@@ -15,6 +16,7 @@ def count_words_and_sentences(filename):
     except FileNotFoundError:
         print("Файл не знайдено!")
         return None, None
+
 
 if __name__ == "__main__":
     filename = input("Введіть назву файлу: ")
