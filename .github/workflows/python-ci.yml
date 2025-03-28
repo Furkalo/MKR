@@ -1,4 +1,5 @@
 name: Python CI
+
 on:
   push:
     branches:
@@ -13,22 +14,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Крок для клонування репозиторію
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Крок для налаштування Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.12"
 
+      # Крок для інсталяції залежностей
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install flake8 pytest pytest-html  # Install flake8 explicitly
+          pip install flake8 pytest pytest-html
 
+      # Крок для перевірки коду на відповідність стандарту PEP8 за допомогою flake8
       - name: Check PEP8 compliance with flake8
         run: flake8 . --max-line-length=200
 
+      # Крок для запуску тестів із pytest і генерації звіту у форматі HTML
       - name: Run unit tests with pytest
         run: pytest --html=report.html --self-contained-html
